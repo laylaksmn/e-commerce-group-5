@@ -15,7 +15,7 @@ You need to create a simple CRUD E-Commerce interface with several pages:
 1. **Homepage:**
 
 ## DB Structure
-
+![db structure](https://github.com/WisnuIbnu/E-Commerce-pemweb-uap/blob/main/public/db_structure.png?raw=true)
 
 ## Prerequisites
 
