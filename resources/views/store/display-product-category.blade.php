@@ -12,7 +12,7 @@
     @if(auth()->user()->store && $store->is_verified == 1)
     <x-secondary-button onclick="window.location='{{ route('category.create') }}'">Create New Category</x-secondary-button>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        @forelse (categories as $category)
+        @forelse ($categories as $category)
         <div class="border rounded p-4 flex flex-col">
             <img src="{{ asset('storage/' . $category->image) }}" class="h-40 w-full object-cover rounded mb-2">
             <h3 class="text-lg font-semibold">{{ $category->name }}</h3>

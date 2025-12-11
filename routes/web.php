@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\WithdrawalController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +40,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/category/create', [ProductCategoryController::class, 'create'])->name('category.create');
     Route::post('/category/store', [ProductCategoryController::class, 'store'])->name('category.store');
     Route::get('/category/{category}/edit', [ProductCategoryController::class, 'edit'])->name('category.edit');
-    Route::put('/category/{category}', [ProductCategoryController::class, 'update'])->name('category.update');
+    Route::patch('/category/{category}', [ProductCategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{category}', [ProductCategoryController::class, 'destroy'])->name('category.destroy');
+
+    Route::get('/withdrawal/create', [WithdrawalController::class, 'create'])->name('withdrawal.create');
+    Route::post('/withdrawal/store', [WithdrawalController::class, 'store'])->name('withdrawal.store');
+    Route::get('/withdrawal/{withdrawal}/edit', [WithdrawalController::class, 'edit'])->name('withdrawal.edit');
+    Route::patch('/withdrawal/edit', [WithdrawalController::class, 'update'])->name('withdrawal.update');
 });
 
 require __DIR__.'/auth.php';

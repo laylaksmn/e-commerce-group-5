@@ -34,6 +34,7 @@ class ProductCategoryController extends Controller
     public function edit(Request $request): View
     {
         $store = $request->user()->store;
+        $categories = ProductCategory::all();
         return view('store.edit', [
             'category' => $category,
         ]);
