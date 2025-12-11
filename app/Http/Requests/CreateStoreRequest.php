@@ -25,7 +25,7 @@ class CreateStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'logo' => ['required', 'image', 'mimes:jpeg,png,jpg'],
+            'logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg'],
             'about' => ['required', 'string'],
             'phone' => ['required', 'string', 'max:255'],
             'address_id' => ['required', 'string', 'max:255'],

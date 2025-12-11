@@ -9,7 +9,7 @@
         </p>
     </header>
 
-    @if(auth()->user()->store && $store->is_verified == 1){{ auth()->user()->store->name }}
+    @if(auth()->user()->store && $store->is_verified == 1)
     <x-danger-button
         x-data=""
         x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"

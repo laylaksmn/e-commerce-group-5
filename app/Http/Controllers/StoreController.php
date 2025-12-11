@@ -25,7 +25,9 @@ class StoreController extends Controller
         $this->authorize('create', Store::class);
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $data['logo'] = $request->file('logo')->store('store_logo', 'public');
+        if($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('store_logo', 'public');
+        }
         $data['is_verified'] = 0;
         $store = Store::create($data);
         return Redirect::route('store.edit')->with('status', 'Please wait while our admin verifies your store.');
@@ -45,7 +47,9 @@ class StoreController extends Controller
         $this->authorize('update', Store::class);
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $data['logo'] = $request->file('logo')->store('store_logo', 'public');;
+        if($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('store_logo', 'public');
+        }
         $store = $request->user()->store;
         $store->update($data);
         return Redirect::route('store.edit')->with('status', 'Store profile changes saved.');

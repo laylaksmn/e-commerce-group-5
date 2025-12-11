@@ -28,7 +28,7 @@
                                 {{ __('Create Store') }}
                             </x-nav-link>
                             <x-nav-link :href="route('store.edit')" :active="request()->routeIs('store.edit')">
-                                {{ __('My Store') }}
+                                {{ __('Store Settings') }}
                             </x-nav-link>
                         @endif
                     @endauth
