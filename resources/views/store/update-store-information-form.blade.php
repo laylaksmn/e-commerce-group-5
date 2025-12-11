@@ -1,14 +1,15 @@
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Store Profile') }}
+            {{ __('Update Store Profile') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your store's information.") }}
+            {{ __("Your store's information.") }}
         </p>
     </header>
 
+    @if(auth()->user()->store && $store->is_verified == 1){{ auth()->user()->store->name }}
     <form method="post" action="{{ route('store.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
@@ -62,18 +63,20 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button>{{ __('Save Changes') }}</x-primary-button>
 
-            @if (session('status') === 'store-updated')
+            @if (session('status'))
                 <p
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
+                    x-init="setTimeout(() => show = false, 5000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >{{ session('status') }}</p>
             @endif
         </div>
     </form>
+    @else No verified store yet.
+    @endif
 </section>
 

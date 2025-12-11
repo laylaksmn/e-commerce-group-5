@@ -23,6 +23,13 @@
                             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                 {{ __('Dashboard') }}
                             </x-nav-link>
+                        @elseif(Auth::user()->role === 'member')
+                            <x-nav-link :href="route('store.create')" :active="request()->routeIs('store.create')">
+                                {{ __('Create Store') }}
+                            </x-nav-link>
+                            <x-nav-link :href="route('store.edit')" :active="request()->routeIs('store.edit')">
+                                {{ __('My Store') }}
+                            </x-nav-link>
                         @endif
                     @endauth
                 </div>

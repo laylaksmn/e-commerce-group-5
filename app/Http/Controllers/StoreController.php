@@ -28,7 +28,7 @@ class StoreController extends Controller
         $data['logo'] = $request->file('logo')->store('store_logo', 'public');
         $data['is_verified'] = 0;
         $store = Store::create($data);
-        return Redirect::route('store.create')->with('status', 'store-created');
+        return Redirect::route('store.edit')->with('status', 'Please wait while our admin verifies your store.');
     }
 
     public function edit(Request $request): View
@@ -48,7 +48,7 @@ class StoreController extends Controller
         $data['logo'] = $request->file('logo')->store('store_logo', 'public');;
         $store = $request->user()->store;
         $store->update($data);
-        return Redirect::route('store.edit')->with('status', 'store-updated');
+        return Redirect::route('store.edit')->with('status', 'Store profile changes saved.');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -59,6 +59,6 @@ class StoreController extends Controller
         ]);
         $store = $request->user()->store;
         $store->delete();
-        return Redirect::to('/');
+        return Redirect::to('store.edit')->with('status', 'Store deleted');
     }
 }
